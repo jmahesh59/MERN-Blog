@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import {signInStart , signInSuccess,signInFailure} from '../redux/user/userSlice.js'
 import {useDispatch ,useSelector} from 'react-redux';
+import OAuth from '../components/OAuth.jsx';
 
 function Signin() {
  const [formData ,setFormData] = useState({});
@@ -10,8 +11,7 @@ function Signin() {
 //  const[loading,setLoading]=useState(false);
 const disptch = useDispatch();
 const {loading ,error:errorMessage} = useSelector((state)=>state.user)
-console.log(loading)
-console.log(errorMessage)
+
 
  const navigate = useNavigate();
   const handleChange =(e)=>{
@@ -87,7 +87,10 @@ console.log(errorMessage)
                     />
                 </div>
                 <Button gradientDuoTone={"purpleToPink"} type='submit' disabled={loading}>{loading?"loading..":"Sign In"}</Button>
+                <OAuth/>
+
               </form>
+
               <div className="flex gap-2 text-sm mt-5">
                 <span>Dont Have an account?</span>
                 <Link to='/sign-up' className='text-blue-500'>Sign Up</Link>
@@ -95,6 +98,8 @@ console.log(errorMessage)
               {
                 errorMessage && (<Alert className='mt-5' color='failure'>{errorMessage}</Alert>)
               }
+            
+
             </div>
        </div>
     </div>
