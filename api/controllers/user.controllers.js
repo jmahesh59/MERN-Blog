@@ -93,6 +93,7 @@ export const updateUser = async (req, res, next) => {
       next(error);
     }
   };
+<<<<<<< HEAD
   
 
   export const deleteUser = async(req,res)=>{
@@ -108,3 +109,6 @@ export const updateUser = async (req, res, next) => {
       next(error)
     }
   }
+=======
+  
+>>>>>>> e92f7bd37c1f191db9d8b65c2793dfee9dac121d
