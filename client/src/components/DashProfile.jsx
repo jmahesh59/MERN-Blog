@@ -94,6 +94,7 @@ const handleSubmit = async (e) => {
     setUpdateUserError("user profile updated successfully")
    }else{
     dispatch(updateSuccess(data));
+    console.log(data)
     setUpdateUserSucess("user update successfully")
    }
 
