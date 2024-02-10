@@ -3,7 +3,7 @@ import { HiArrowSmRight, HiUser } from 'react-icons/hi';
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect , useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { signOutSuccess } from '../redux/user/userSlice.js';
+import { signoutSuccess } from '../redux/user/userSlice.js';
 function DashSidebar() {
     const location = useLocation();
   const [tab,setTab] = useState('');
@@ -27,7 +27,7 @@ function DashSidebar() {
       if(!res.ok){
         console.log(data.message)
       }else{
-        dispatch(signOutSuccess())
+        dispatch(signoutSuccess())
       }
   
     } catch (error) {

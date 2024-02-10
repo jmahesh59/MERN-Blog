@@ -1,3 +1,5 @@
+
+
 import { Alert, Button, Modal, TextInput } from 'flowbite-react'
 import React, { useEffect, useRef, useState } from 'react'
 import {  useSelector ,useDispatch} from 'react-redux'
@@ -5,11 +7,12 @@ import {getDownloadURL, getStorage, uploadBytesResumable ,ref } from 'firebase/s
 import {app} from '../firebase.js'
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import { updateStart,updateSuccess,updateFailure ,deleteUserFailure,deleteUserStart,deleteUserSuccess, signOutSuccess} from '../redux/user/userSlice.js';
+import { updateStart,updateSuccess,updateFailure ,deleteUserFailure,deleteUserStart,deleteUserSuccess, signoutSuccess} from '../redux/user/userSlice.js';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
+import { Link } from 'react-router-dom';
 //*********************  component start  ************************* */
 function DashProfile() {
-  const {currentUser} = useSelector(state=>state.user);
+  const {currentUser ,loading} = useSelector(state=>state.user);
   const filePickerRef = useRef();
   const[imageFile,setImageFile] =useState(null);
   const[imageFileUrl ,setImageFileUrl] =useState(null);
@@ -21,7 +24,7 @@ function DashProfile() {
   const [updateUserError , setUpdateUserError] = useState(null);
  const [showModel,setShowModal] = useState(false)
 
-
+console.log(currentUser.profilePicture)
 
    //*******  Image section  **********/
     const handleImageChange =(e)=>{
@@ -132,7 +135,7 @@ const handleSignOut =async()=>{
     if(!res.ok){
       console.log(data.message)
     }else{
-      dispatch(signOutSuccess())
+      dispatch(signoutSuccess())
     }
 
   } catch (error) {
@@ -173,7 +176,7 @@ const handleSignOut =async()=>{
             />
           )}
           <img
-            src={imageFileUrl || currentUser.profilePicture}
+            src={ imageFileUrl ||currentUser.profilePicture }
             alt='user'
             className={`rounded-full w-full h-full object-cover border-8 border-[lightgray] ${
               imageFileUploadProgress &&
@@ -206,7 +209,20 @@ const handleSignOut =async()=>{
                 placeholder='password'
                 onChange={handleChange}
             />
-            <Button type='submit' gradientDuoTone={"purpleToBlue"} outline>Update</Button>
+            <Button type='submit' gradientDuoTone={"purpleToBlue"} outline disabled={loading }>{loading?"Loading..":"Update"}Update</Button>
+            {
+              currentUser.isAdmin && (
+                <Link to={'/create-post'}>
+                <Button
+                  type='button'
+                  gradientDuoTone={"purpleToPink"}
+                  className='w-full outline'
+                  
+                >Creat a post
+                </Button>
+                </Link>
+              )
+            }
         </form>
         <div className="text-red-500 flex justify-between mt-5">
             <span className='cursor-pointer' onClick={()=>setShowModal(true)} >Delete Account</span>

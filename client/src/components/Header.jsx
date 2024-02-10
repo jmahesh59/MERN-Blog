@@ -5,7 +5,7 @@ import {AiOutlineSearch} from 'react-icons/ai'
 import {FaMoon ,FaSun} from 'react-icons/fa'
 import {useDispatch, useSelector} from 'react-redux'
 import {toogleTheme} from '../redux/theme/themeSlice.js'
-import { signOutSuccess } from '../redux/user/userSlice.js'
+import { signoutSuccess } from '../redux/user/userSlice.js'
 function Header() {
     const path = useLocation().pathname;
     const {currentUser} = useSelector((state)=>state.user)
@@ -23,7 +23,7 @@ function Header() {
           if(!res.ok){
             console.log(data.message)
           }else{
-            dispatch(signOutSuccess())
+            dispatch(signoutSuccess())
           }
       
         } catch (error) {
