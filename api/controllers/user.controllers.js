@@ -216,3 +216,15 @@ try {
 }
 
  }
+
+ export const getUser = async(req ,res,next)=>{
+  try {
+    const user = await User.findById(req.params.userId);
+    if(!user) return next(errorHander(404,'user not found'))
+    const {password , ...rest} = user._doc;
+    res.status(200).json(rest);
+    
+  } catch (error) {
+    next(error)
+  }
+ }
