@@ -12,7 +12,7 @@ function DashPosts() {
   const [showModal,setShowModal] = useState(false)
   const [postIdToDelete,setPostIdToDelete] =useState('');
 
-
+                        
   useEffect(() => {
   const fetchPosts = async () => {
     try {

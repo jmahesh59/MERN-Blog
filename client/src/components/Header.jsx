@@ -8,6 +8,7 @@ import {toogleTheme} from '../redux/theme/themeSlice.js'
 import { signoutSuccess } from '../redux/user/userSlice.js'
 function Header() {
     const path = useLocation().pathname;
+    // console.log(path)
     const {currentUser} = useSelector((state)=>state.user)
     const dispatch = useDispatch()
     const {theme} = useSelector(state=>state.theme)
@@ -67,9 +68,13 @@ function Header() {
                         <span className='block text-sm'>@{currentUser.username}</span>
                         <span className='block text-sm font-medium truncate'>@{currentUser.email}</span>
                     </Dropdown.Header>
+
+
                     <Link  to={"/dashboard?tab=profile"}>
                         <Dropdown.Item>Profile</Dropdown.Item>
                     </Link>
+
+                    
                     <Dropdown.Divider/>
                     <Dropdown.Item onClick={handleSignOut}>Sign out</Dropdown.Item>
                 </Dropdown>

@@ -7,6 +7,7 @@ import {app} from '../firebase.js';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { useNavigate } from 'react-router-dom';
+
 function CreatePost() {
   const [file ,setFile] = useState(null);
   const [imageUploadProgress,setImageUploadProgress] = useState(null);
@@ -73,7 +74,7 @@ const handleSubmit =async(e)=>{
     navigate(`/post/${data.slug}`)
     // console.log(data)
   } catch (error) {
-    setpublishError("something wen wrong")
+    setpublishError("something went wrong")
   }
 
 }
@@ -86,7 +87,7 @@ const handleSubmit =async(e)=>{
         <div className='flex flex-col sm:flex-row sm:justify-between gap-2'> 
             <TextInput type='text' placeholder='Title' required id='title' className='flex-1' onChange={(e)=>setFormData({...formData,[e.target.id]:e.target.value})}/>
             <Select
-             onChange={(e)=>setFormData({...formData,category:e.target.value})}
+             onChange={(e)=>setFormData({...formData,Category:e.target.value})}
             >
                 <option value={"uncategorized"}>Select a category</option>
                 <option value="javascript">Javascript</option>

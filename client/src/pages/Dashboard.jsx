@@ -13,7 +13,7 @@ function Dashboard() {
     const urlParams = new URLSearchParams(location.search)
     // console.log(urlParams)
     const tabFormUrl = urlParams.get('tab')
-    // console.log(tabFormUrl);
+    console.log(tabFormUrl);
     if(tabFormUrl){
       setTab(tabFormUrl);
     }
