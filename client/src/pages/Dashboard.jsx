@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import DashSidebar from '../components/DashSidebar';
 import DashProfile from '../components/DashProfile';
 import DashPosts from '../components/DashPosts';
 import DashUsers from '../components/DashUsers';
 import DashComments from '../components/DashComments';
+import DashboardCompo from '../components/DashboardCompo';
 function Dashboard() {
   const location = useLocation();
   // console.log(location)
@@ -35,6 +36,9 @@ function Dashboard() {
 
       {/*{comment...} */}
       {tab==='comments' && <DashComments/>}
+
+      {/*{Dashboard compo} */}
+      {tab==='dash' && <DashboardCompo/>}
     </div>
   )
 }
