@@ -14,6 +14,7 @@ import CreatePost from './pages/CreatePost';
 import UpdatePost from './pages/UpdatePost';
 import PostPage from './pages/PostPage';
 import ScrollToTopl from './components/ScrollToTopl';
+import Search from './pages/Search';
 function App() {
   return (
     <BrowserRouter>
@@ -25,6 +26,7 @@ function App() {
       <Route path="/project" element={<Projects/>}/>
       <Route path="/sign-in" element={<Signin/>}/>
       <Route path="/sign-up" element={<Signup/>}/>
+      <Route path='/search' element={<Search/>}/>
       <Route element={<PrivateRoute/>}>
       <Route path="/Dashboard" element={<Dashboard/>}/>
       </Route>
